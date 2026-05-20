@@ -1,0 +1,1553 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Asset Card System — Acronis Partner Resources</title>
+<meta name="viewport" content="width=1440" />
+<link rel="stylesheet" href="ds/colors_and_type.css" />
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+  /* ── Page chrome ───────────────────────────────────────────────── */
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg-subtle);
+    color: var(--fg-1);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    min-width: 1440px;
+  }
+
+  .page {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 56px 64px 96px;
+  }
+
+  /* ── Top header bar ───────────────────────────────────────────── */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--acronis-blue-800);
+  }
+  .brand img { width: 28px; height: 28px; }
+  .brand .brand-name {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+  }
+  .brand .brand-sub {
+    color: var(--fg-3);
+    font-size: 14px;
+    margin-left: 12px;
+    padding-left: 12px;
+    border-left: 1px solid var(--border);
+  }
+  .topbar-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-size: 13px;
+    color: var(--fg-3);
+  }
+  .topbar-meta .dot {
+    width: 6px; height: 6px; border-radius: 999px;
+    background: var(--success);
+    display: inline-block;
+    margin-right: 6px;
+  }
+
+  /* ── Hero intro ───────────────────────────────────────────────── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 56px;
+  }
+  .hero h1 {
+    font-size: 52px;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--acronis-blue-800);
+    margin: 0 0 16px;
+    max-width: 760px;
+    font-weight: 700;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--brand);
+  }
+  .hero p {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--fg-2);
+    max-width: 640px;
+    margin: 0;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+  }
+  .hero-stats .stat .num {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--acronis-blue-800);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .hero-stats .stat .lbl {
+    font-size: 12px;
+    color: var(--fg-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+
+  /* ── Section headers ──────────────────────────────────────────── */
+  .section {
+    margin-bottom: 80px;
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--brand);
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  .section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--acronis-blue-800);
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .section-desc {
+    color: var(--fg-2);
+    font-size: 14px;
+    max-width: 460px;
+    text-align: right;
+    line-height: 1.5;
+  }
+
+  /* ── Stage (the showcase area) ────────────────────────────────── */
+  .stage {
+    display: grid;
+    grid-template-columns: 480px 1fr;
+    gap: 64px;
+    align-items: flex-start;
+  }
+  .stage-anatomy {
+    position: sticky;
+    top: 32px;
+  }
+  .anatomy-list { margin: 0; padding: 0; list-style: none; }
+  .anatomy-list li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+  }
+  .anatomy-list li:last-child { border-bottom: 1px solid var(--border); }
+  .anatomy-num {
+    width: 24px; height: 24px;
+    border-radius: 999px;
+    background: var(--acronis-blue-050);
+    color: var(--brand);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono);
+  }
+  .anatomy-name {
+    font-weight: 600;
+    color: var(--fg-1);
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+  .anatomy-name .opt {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--brand);
+    background: var(--acronis-blue-050);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    vertical-align: 1px;
+  }
+  .anatomy-name .req {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--acronis-neutral-700);
+    background: var(--acronis-neutral-100);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    vertical-align: 1px;
+  }
+  .anatomy-desc { font-size: 13px; color: var(--fg-2); line-height: 1.5; }
+
+  /* ── The Card ─────────────────────────────────────────────────── */
+  .card {
+    background: var(--bg);
+    border: 1px solid var(--acronis-blue-200);
+    border-radius: 14px;
+    box-shadow: 0 1px 0 rgba(16,24,40,0.02), 0 8px 24px -16px rgba(31,63,122,0.16);
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    overflow: visible;
+  }
+  .card-body {
+    padding: 28px 28px 24px;
+  }
+  .card-logo {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .card-logo img,
+  .card-logo svg.logo-svg {
+    height: 28px;
+    width: auto;
+  }
+  .card-logo .logo-text {
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--acronis-neutral-700);
+    letter-spacing: -0.01em;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 24px;
+    padding: 0 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .tag-success { background: var(--acronis-green-100); color: var(--acronis-green-700); }
+  .tag-info    { background: var(--acronis-blue-100); color: var(--acronis-blue-700); }
+  .tag-neutral { background: var(--acronis-neutral-100); color: var(--acronis-neutral-700); }
+  .tag-warning { background: var(--acronis-amber-100); color: #8A6610; }
+  .tag-danger  { background: var(--acronis-red-100); color: var(--acronis-red-700); }
+
+  .card-title {
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: var(--acronis-blue-800);
+    margin: 0 0 10px;
+  }
+  .card-desc {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--fg-2);
+    margin: 0;
+  }
+  .card-desc.clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Expandable region */
+  .card-expand {
+    overflow: hidden;
+    transition: max-height var(--duration-slow) var(--ease-emphasized),
+                opacity var(--duration-base) var(--ease-standard);
+    max-height: 0;
+    opacity: 0;
+  }
+  .card[data-state="expanded"] .card-expand {
+    max-height: 1200px;
+    opacity: 1;
+  }
+
+  .card-meta {
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px dashed var(--border-strong);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px 14px;
+    font-size: 14px;
+    color: var(--fg-2);
+    line-height: 1.5;
+  }
+  .card-meta .mlbl {
+    font-size: 11px;
+    color: var(--fg-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-top: 2px;
+  }
+  .card-meta .mval { color: var(--fg-1); }
+  .card-meta .mval a { color: var(--link); }
+
+  /* Download list */
+  .dl-section {
+    margin-top: 22px;
+  }
+  .dl-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .dl-section-head .lbl {
+    font-size: 11px;
+    color: var(--fg-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .dl-section-head .ct {
+    font-size: 12px;
+    color: var(--fg-3);
+    font-variant-numeric: tabular-nums;
+  }
+  .dl-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 4px;
+    background: var(--acronis-neutral-050);
+  }
+  .dl-row {
+    display: grid;
+    grid-template-columns: 32px 1fr auto auto;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 10px 10px 8px;
+    border-radius: 7px;
+    background: var(--bg);
+    cursor: pointer;
+    transition: background var(--duration-fast) var(--ease-standard);
+  }
+  .dl-row:hover { background: var(--acronis-blue-050); }
+  .dl-icon {
+    width: 32px; height: 32px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--bg);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    font-family: var(--font-mono);
+  }
+  .dl-icon.pdf { background: #D9272E; }
+  .dl-icon.zip { background: #4A5570; }
+  .dl-icon.xls { background: #1F7144; }
+  .dl-icon.doc { background: #1F3F7A; }
+  .dl-icon.png { background: #6E94C8; }
+  .dl-icon.fig { background: #25304A; }
+
+  .dl-meta { min-width: 0; }
+  .dl-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--fg-1);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .dl-sub {
+    font-size: 12px;
+    color: var(--fg-3);
+    margin-top: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+  .dl-size {
+    font-size: 12px;
+    color: var(--fg-3);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+  .dl-btn {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--brand);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-standard);
+  }
+  .dl-row:hover .dl-btn {
+    background: var(--brand);
+    color: var(--bg);
+    border-color: var(--brand);
+  }
+  .dl-btn svg { width: 16px; height: 16px; }
+
+  /* Persistent footer */
+  .card-footer {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px 14px 22px;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+    border-radius: 0 0 14px 14px;
+  }
+  .footer-summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--fg-2);
+    min-width: 0;
+  }
+  .footer-summary .pkg-size {
+    font-variant-numeric: tabular-nums;
+    color: var(--fg-3);
+  }
+  .footer-summary .extra {
+    color: var(--fg-3);
+    font-size: 12px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 38px;
+    padding: 0 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all var(--duration-fast) var(--ease-standard);
+    font-family: var(--font-sans);
+    white-space: nowrap;
+  }
+  .btn svg { width: 16px; height: 16px; }
+  .btn-primary {
+    background: var(--brand);
+    color: var(--bg);
+    box-shadow: 0 1px 2px rgba(31,63,122,0.16), 0 4px 12px -4px rgba(72,117,179,0.40);
+  }
+  .btn-primary:hover { background: var(--brand-hover); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--fg-2);
+    border-color: var(--border);
+  }
+  .btn-ghost:hover { background: var(--bg-subtle); color: var(--fg-1); }
+  .btn-icon {
+    width: 38px;
+    padding: 0;
+    justify-content: center;
+  }
+  .btn-icon .chev {
+    transition: transform var(--duration-slow) var(--ease-emphasized);
+  }
+  .card[data-state="expanded"] .btn-icon .chev {
+    transform: rotate(180deg);
+  }
+
+  /* Number markers on card */
+  .marker {
+    position: absolute;
+    width: 22px; height: 22px;
+    border-radius: 999px;
+    background: var(--bg);
+    border: 1.5px solid var(--brand);
+    color: var(--brand);
+    font-size: 11px;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 5;
+    box-shadow: 0 2px 6px rgba(31,63,122,0.18);
+  }
+
+  /* ── Variations grid ──────────────────────────────────────────── */
+  .var-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .var-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .var-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .var-label .name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--fg-1);
+  }
+  .var-label .desc {
+    font-size: 12px;
+    color: var(--fg-3);
+  }
+  .var-cell .card {
+    max-width: 100%;
+  }
+
+  /* Small variant adjustments */
+  .card-small .card-body { padding: 22px 22px 18px; }
+  .card-small .card-title { font-size: 19px; margin-bottom: 8px; }
+  .card-small .card-desc { font-size: 14px; }
+  .card-small .card-footer { padding: 12px 12px 12px 18px; }
+  .card-small .btn { height: 34px; font-size: 13px; padding: 0 14px; }
+  .card-small .btn-icon { width: 34px; padding: 0; }
+  .card-small .card-logo { height: 28px; margin-bottom: 16px; }
+  .card-small .card-logo img, .card-small .card-logo svg.logo-svg { height: 22px; }
+  .card-small .card-logo .logo-text { font-size: 18px; }
+
+  /* ── Key features grid ────────────────────────────────────────── */
+  .feat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .feat {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .feat-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--brand);
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+  }
+  .feat-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--acronis-blue-050);
+    color: var(--brand);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .feat-icon svg { width: 22px; height: 22px; }
+  .feat-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--acronis-blue-800);
+    letter-spacing: -0.01em;
+    margin: 0 0 8px;
+    line-height: 1.3;
+  }
+  .feat-desc {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--fg-2);
+    margin: 0;
+  }
+  .feat-diagram {
+    margin-top: 18px;
+    height: 80px;
+    border-radius: 8px;
+    background: var(--bg-subtle);
+    border: 1px dashed var(--border-strong);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Diagram: persistent footer */
+  .dgm-stack {
+    display: flex; flex-direction: column;
+    width: 78%;
+    gap: 4px;
+  }
+  .dgm-stack .body-block {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    height: 14px;
+  }
+  .dgm-stack .body-block.fade { opacity: 0.5; }
+  .dgm-stack .footer-block {
+    background: var(--brand);
+    border-radius: 4px;
+    height: 16px;
+    margin-top: 4px;
+    position: relative;
+  }
+  .dgm-stack .footer-block::after {
+    content: ""; position: absolute; right: 4px; top: 4px;
+    width: 18px; height: 8px; border-radius: 2px;
+    background: rgba(255,255,255,0.6);
+  }
+
+  /* Diagram: progressive disclosure (two cards) */
+  .dgm-disclosure {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 88%;
+  }
+  .dgm-disclosure .mini {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 5px;
+    flex: 1;
+    display: flex; flex-direction: column;
+    gap: 3px;
+  }
+  .dgm-disclosure .mini .ln {
+    height: 4px; border-radius: 2px;
+    background: var(--acronis-neutral-200);
+  }
+  .dgm-disclosure .mini .ln.t { width: 60%; background: var(--acronis-blue-800); height: 5px; }
+  .dgm-disclosure .mini.tall { padding-bottom: 10px; }
+  .dgm-disclosure .arrow {
+    width: 14px; height: 14px; flex: none;
+    color: var(--brand);
+  }
+
+  /* Diagram: optional elements */
+  .dgm-optional {
+    width: 86%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+  .dgm-optional .slot {
+    aspect-ratio: 1;
+    border-radius: 5px;
+    background: var(--bg);
+    border: 1px dashed var(--border-strong);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+    color: var(--fg-3);
+    font-family: var(--font-mono);
+  }
+  .dgm-optional .slot.on {
+    background: var(--acronis-blue-050);
+    border: 1px solid var(--brand);
+    color: var(--brand);
+  }
+
+  /* Diagram: multi-download */
+  .dgm-multi {
+    width: 86%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .dgm-multi .row {
+    display: grid;
+    grid-template-columns: 12px 1fr 18px;
+    gap: 6px;
+    align-items: center;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 4px 5px;
+    height: 18px;
+  }
+  .dgm-multi .row .ic {
+    width: 12px; height: 12px; border-radius: 2px;
+  }
+  .dgm-multi .row .nm {
+    height: 4px; border-radius: 2px;
+    background: var(--acronis-neutral-200);
+    width: 70%;
+  }
+  .dgm-multi .row .dl {
+    width: 14px; height: 14px; border-radius: 3px;
+    background: var(--acronis-blue-050);
+    color: var(--brand);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .dgm-multi .row .dl svg { width: 8px; height: 8px; }
+
+  /* ── List view toggle (small section showing list layout) ─────── */
+  .layout-toggle {
+    display: inline-flex;
+    align-items: center;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 3px;
+    gap: 2px;
+  }
+  .layout-toggle button {
+    border: none; background: transparent;
+    height: 28px;
+    padding: 0 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--fg-3);
+    cursor: pointer;
+    font-family: var(--font-sans);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .layout-toggle button svg { width: 14px; height: 14px; }
+  .layout-toggle button.active {
+    background: var(--brand);
+    color: var(--bg);
+  }
+
+  /* List variant of card */
+  .card-list {
+    max-width: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 64px 1fr 200px auto auto;
+    align-items: center;
+    gap: 24px;
+    padding: 18px 20px;
+  }
+  .card-list .l-logo {
+    width: 56px; height: 56px;
+    border-radius: 10px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .card-list .l-logo img { height: 32px; width: auto; }
+  .card-list .l-logo svg.logo-svg { height: 32px; width: auto; }
+  .card-list .l-main { min-width: 0; }
+  .card-list .l-tags { display: flex; gap: 6px; margin-bottom: 6px; }
+  .card-list .l-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--acronis-blue-800);
+    margin: 0 0 2px;
+    letter-spacing: -0.01em;
+  }
+  .card-list .l-desc {
+    font-size: 13px;
+    color: var(--fg-2);
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .card-list .l-meta {
+    font-size: 12px;
+    color: var(--fg-3);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  .card-list .l-meta .dotsep {
+    width: 3px; height: 3px; border-radius: 999px;
+    background: var(--border-strong);
+  }
+  .card-list .l-btns {
+    display: flex; gap: 8px;
+  }
+
+  /* Footer of the page */
+  .page-foot {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between;
+    color: var(--fg-3);
+    font-size: 12px;
+  }
+
+  /* Spec rail under the expanded card */
+  .spec-rail {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+    padding: 18px 0 0;
+    border-top: 1px solid var(--border);
+  }
+  .spec {
+    font-size: 12px;
+    color: var(--fg-3);
+  }
+  .spec .k {
+    font-family: var(--font-mono);
+    color: var(--fg-3);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+  .spec .v {
+    font-size: 13px;
+    color: var(--fg-1);
+    font-weight: 500;
+  }
+  .spec .v.mono { font-family: var(--font-mono); font-weight: 400; }
+
+  /* Section toggle (list/grid demo) */
+  .grid-demo-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .grid-demo-head .gh-l { font-size: 13px; color: var(--fg-3); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<!-- Lucide is loaded; we'll call createIcons after dom -->
+
+<div class="page">
+
+  <!-- ─────────── Top bar ─────────── -->
+  <header class="topbar">
+    <div class="brand">
+      <img src="ds/assets/Acronis-symbol.svg" alt="Acronis" />
+      <span class="brand-name">Acronis</span>
+      <span class="brand-sub">Partner Resource Portal — Asset Library</span>
+    </div>
+    <div class="topbar-meta">
+      <span><span class="dot"></span>v2.4 · Card system spec</span>
+      <span>1440 × auto</span>
+      <span>May 2026</span>
+    </div>
+  </header>
+
+  <!-- ─────────── Hero ─────────── -->
+  <section class="hero">
+    <div>
+      <h1>Adaptive content cards for <em>downloadable assets</em>.</h1>
+      <p>A modular card system for the partner portal. Every element except the title is optional — cards scale from a single download to multi‑file kits, with persistent footer actions and progressive disclosure of metadata.</p>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="num">9</div><div class="lbl">Slots</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">States</div></div>
+      <div class="stat"><div class="num">14</div><div class="lbl">Variants</div></div>
+    </div>
+  </section>
+
+  <!-- ─────────── 01 COLLAPSED STATE ─────────── -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">01 / STATE</div>
+      <h2 class="section-title">Collapsed</h2>
+      <div class="section-desc">The default resting state. Strong hierarchy with a persistent footer that always exposes a primary download — secondary files are summarized as a counter.</div>
+    </div>
+
+    <div class="stage">
+      <!-- Anatomy -->
+      <aside class="stage-anatomy">
+        <ol class="anatomy-list">
+          <li>
+            <span class="anatomy-num">1</span>
+            <div>
+              <div class="anatomy-name">Logo <span class="opt">Optional</span></div>
+              <div class="anatomy-desc">28px brand mark — partner/vendor identity. Hidden when not present; no placeholder.</div>
+            </div>
+          </li>
+          <li>
+            <span class="anatomy-num">2</span>
+            <div>
+              <div class="anatomy-name">Status tags <span class="opt">Optional</span></div>
+              <div class="anatomy-desc">Pastel pills, up to 3 visible. Semantic: success, info, neutral, warning, danger.</div>
+            </div>
+          </li>
+          <li>
+            <span class="anatomy-num">3</span>
+            <div>
+              <div class="anatomy-name">Title <span class="req">Required</span></div>
+              <div class="anatomy-desc">Navy bold, 24px / 1.2. The only mandatory element of the card.</div>
+            </div>
+          </li>
+          <li>
+            <span class="anatomy-num">4</span>
+            <div>
+              <div class="anatomy-name">Description preview <span class="opt">Optional</span></div>
+              <div class="anatomy-desc">2‑line clamp in collapsed state. Reveals fully on expand.</div>
+            </div>
+          </li>
+          <li>
+            <span class="anatomy-num">5</span>
+            <div>
+              <div class="anatomy-name">Footer summary <span class="req">Required</span></div>
+              <div class="anatomy-desc">Total package size + “+N files” counter when additional downloads exist.</div>
+            </div>
+          </li>
+          <li>
+            <span class="anatomy-num">6</span>
+            <div>
+              <div class="anatomy-name">Primary download <span class="req">Required</span></div>
+              <div class="anatomy-desc">Always visible. Triggers the headline asset; never hidden behind expand.</div>
+            </div>
+          </li>
+          <li>
+            <span class="anatomy-num">7</span>
+            <div>
+              <div class="anatomy-name">Expand control <span class="opt">Conditional</span></div>
+              <div class="anatomy-desc">Chevron appears only when expandable content exists (long desc, metadata, or multi‑download).</div>
+            </div>
+          </li>
+        </ol>
+      </aside>
+
+      <!-- Card with markers -->
+      <div style="position:relative;">
+        <article class="card" data-state="collapsed" id="hero-card">
+          <span class="marker" style="top:18px;left:-11px;">1</span>
+          <span class="marker" style="top:78px;left:-11px;">2</span>
+          <span class="marker" style="top:144px;left:-11px;">3</span>
+          <span class="marker" style="top:200px;left:-11px;">4</span>
+          <span class="marker" style="bottom:24px;left:-11px;">5</span>
+          <span class="marker" style="bottom:24px;right:118px;">6</span>
+          <span class="marker" style="bottom:24px;right:-11px;">7</span>
+
+          <div class="card-body">
+            <div class="card-logo">
+              <!-- Microsoft logo SVG -->
+              <svg class="logo-svg" viewBox="0 0 108 23" xmlns="http://www.w3.org/2000/svg" aria-label="Microsoft">
+                <rect x="0" y="0" width="10" height="10" fill="#F25022"/>
+                <rect x="11" y="0" width="10" height="10" fill="#7FBA00"/>
+                <rect x="0" y="11" width="10" height="10" fill="#00A4EF"/>
+                <rect x="11" y="11" width="10" height="10" fill="#FFB900"/>
+                <text x="27" y="17" font-family="Segoe UI, sans-serif" font-size="16" font-weight="500" fill="#737373">Microsoft</text>
+              </svg>
+            </div>
+            <div class="card-tags">
+              <span class="tag tag-success">Certified</span>
+              <span class="tag tag-info">Backup &amp; DR</span>
+              <span class="tag tag-neutral">Partner kit</span>
+            </div>
+            <h3 class="card-title">Backup as a Service — Microsoft 365</h3>
+            <p class="card-desc clamp">#1 hybrid cloud BaaS for any virtual, physical, and cloud environment. Complete enablement kit for Microsoft partners delivering Acronis Cyber Protect to mid‑market customers.</p>
+
+            <!-- Expandable content -->
+            <div class="card-expand">
+              <p class="card-desc" style="margin-top:10px;">Includes the full sales playbook, technical battlecard, customer‑facing one‑pagers, and a co‑branded webinar deck localized for EMEA and APAC regions.</p>
+
+              <div class="card-meta">
+                <div class="mlbl">Owner</div>
+                <div class="mval">Acronis Channel Marketing · <a href="mailto:partner@acronis.com">partner@acronis.com</a></div>
+                <div class="mlbl">Updated</div>
+                <div class="mval">14 May 2026 · revision 2.4</div>
+                <div class="mlbl">Address</div>
+                <div class="mval">19‑21 Nihonbashi Hakozakicho, Chuo‑ku, Tokyo 103‑8510</div>
+                <div class="mlbl">Contact</div>
+                <div class="mval"><a href="tel:+359875328030">+359 875 328 030</a></div>
+              </div>
+
+              <div class="dl-section">
+                <div class="dl-section-head">
+                  <span class="lbl">Included files</span>
+                  <span class="ct">4 files · 18.7 MB total</span>
+                </div>
+                <div class="dl-list">
+                  <div class="dl-row">
+                    <span class="dl-icon pdf">PDF</span>
+                    <div class="dl-meta">
+                      <div class="dl-name">Acronis_BaaS_M365_Partner_Datasheet.pdf</div>
+                      <div class="dl-sub">Datasheet · EN · 8 pages</div>
+                    </div>
+                    <div class="dl-size">2.4 MB</div>
+                    <button class="dl-btn" aria-label="Download"><i data-lucide="arrow-down-to-line"></i></button>
+                  </div>
+                  <div class="dl-row">
+                    <span class="dl-icon zip">ZIP</span>
+                    <div class="dl-meta">
+                      <div class="dl-name">Co‑branded_assets_2026Q2.zip</div>
+                      <div class="dl-sub">Co‑branded · banners + social</div>
+                    </div>
+                    <div class="dl-size">11.2 MB</div>
+                    <button class="dl-btn" aria-label="Download"><i data-lucide="arrow-down-to-line"></i></button>
+                  </div>
+                  <div class="dl-row">
+                    <span class="dl-icon doc">PPT</span>
+                    <div class="dl-meta">
+                      <div class="dl-name">Sales_battlecard_v2.4.pptx</div>
+                      <div class="dl-sub">Sales · EMEA + APAC</div>
+                    </div>
+                    <div class="dl-size">3.8 MB</div>
+                    <button class="dl-btn" aria-label="Download"><i data-lucide="arrow-down-to-line"></i></button>
+                  </div>
+                  <div class="dl-row">
+                    <span class="dl-icon xls">XLS</span>
+                    <div class="dl-meta">
+                      <div class="dl-name">SKU_pricing_matrix_FY26.xlsx</div>
+                      <div class="dl-sub">Pricing · NDA required</div>
+                    </div>
+                    <div class="dl-size">1.3 MB</div>
+                    <button class="dl-btn" aria-label="Download"><i data-lucide="arrow-down-to-line"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /expandable -->
+          </div>
+
+          <div class="card-footer">
+            <div class="footer-summary">
+              <span><span class="pkg-size">18.7 MB</span></span>
+              <span class="extra collapsed-only">· +3 files</span>
+              <span class="extra expanded-only" style="display:none;">· 4 files</span>
+            </div>
+            <button class="btn btn-primary">
+              <i data-lucide="download"></i>
+              Download
+            </button>
+            <button class="btn btn-ghost btn-icon" data-toggle aria-label="Expand">
+              <i data-lucide="chevron-down" class="chev"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- Spec rail under collapsed card -->
+        <div class="spec-rail">
+          <div class="spec"><div class="k">RADIUS</div><div class="v mono">14px</div></div>
+          <div class="spec"><div class="k">PADDING</div><div class="v mono">28 / 22</div></div>
+          <div class="spec"><div class="k">SHADOW</div><div class="v mono">soft–md</div></div>
+          <div class="spec"><div class="k">BORDER</div><div class="v mono">blue‑200</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 02 EXPANDED STATE ─────────── -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">02 / STATE</div>
+      <h2 class="section-title">Expanded</h2>
+      <div class="section-desc">Progressive disclosure reveals long description, metadata, and the structured file list — without ever moving or hiding the persistent footer action.</div>
+    </div>
+
+    <div class="stage">
+      <aside class="stage-anatomy">
+        <ol class="anatomy-list">
+          <li>
+            <span class="anatomy-num">8</span>
+            <div>
+              <div class="anatomy-name">Metadata block <span class="opt">Optional</span></div>
+              <div class="anatomy-desc">Key/value rows: owner, last updated, contact, address. Wrapped in a dashed‑top divider.</div>
+            </div>
+          </li>
+          <li>
+            <span class="anatomy-num">9</span>
+            <div>
+              <div class="anatomy-name">File list <span class="opt">Optional</span></div>
+              <div class="anatomy-desc">Structured rows: type chip · filename · subtitle · size · download. Scales 1–N.</div>
+            </div>
+          </li>
+          <li>
+            <span class="anatomy-num">10</span>
+            <div>
+              <div class="anatomy-name">Persistent footer <span class="req">Stable</span></div>
+              <div class="anatomy-desc">Footer never repositions. Counter switches from “+3 files” to “4 files” when expanded.</div>
+            </div>
+          </li>
+        </ol>
+
+        <div style="margin-top:32px; padding:18px; border-radius:12px; background:var(--acronis-blue-050); border:1px solid var(--acronis-blue-100);">
+          <div style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:var(--brand); margin-bottom:8px;">Try it</div>
+          <div style="font-size:13px; color:var(--fg-2); line-height:1.5;">Click the chevron on the card above (or this one) to toggle states. The animation runs at <span style="font-family:var(--font-mono);">320ms · ease‑emphasized</span>.</div>
+        </div>
+      </aside>
+
+      <!-- Same card, pre-expanded clone -->
+      <div style="position:relative;">
+        <article class="card" data-state="expanded" id="expanded-card">
+          <span class="marker" style="top:330px;left:-11px;">8</span>
+          <span class="marker" style="top:498px;left:-11px;">9</span>
+          <span class="marker" style="bottom:24px;left:-11px;">10</span>
+
+          <div class="card-body">
+            <div class="card-logo">
+              <svg class="logo-svg" viewBox="0 0 108 23" xmlns="http://www.w3.org/2000/svg" aria-label="Microsoft">
+                <rect x="0" y="0" width="10" height="10" fill="#F25022"/>
+                <rect x="11" y="0" width="10" height="10" fill="#7FBA00"/>
+                <rect x="0" y="11" width="10" height="10" fill="#00A4EF"/>
+                <rect x="11" y="11" width="10" height="10" fill="#FFB900"/>
+                <text x="27" y="17" font-family="Segoe UI, sans-serif" font-size="16" font-weight="500" fill="#737373">Microsoft</text>
+              </svg>
+            </div>
+            <div class="card-tags">
+              <span class="tag tag-success">Certified</span>
+              <span class="tag tag-info">Backup &amp; DR</span>
+              <span class="tag tag-neutral">Partner kit</span>
+            </div>
+            <h3 class="card-title">Backup as a Service — Microsoft 365</h3>
+            <p class="card-desc">#1 hybrid cloud BaaS for any virtual, physical, and cloud environment. Complete enablement kit for Microsoft partners delivering Acronis Cyber Protect to mid‑market customers.</p>
+
+            <div class="card-expand">
+              <p class="card-desc" style="margin-top:10px;">Includes the full sales playbook, technical battlecard, customer‑facing one‑pagers, and a co‑branded webinar deck localized for EMEA and APAC regions.</p>
+
+              <div class="card-meta">
+                <div class="mlbl">Owner</div>
+                <div class="mval">Acronis Channel Marketing · <a href="mailto:partner@acronis.com">partner@acronis.com</a></div>
+                <div class="mlbl">Updated</div>
+                <div class="mval">14 May 2026 · revision 2.4</div>
+                <div class="mlbl">Address</div>
+                <div class="mval">19‑21 Nihonbashi Hakozakicho, Chuo‑ku, Tokyo 103‑8510</div>
+                <div class="mlbl">Contact</div>
+                <div class="mval"><a href="tel:+359875328030">+359 875 328 030</a></div>
+              </div>
+
+              <div class="dl-section">
+                <div class="dl-section-head">
+                  <span class="lbl">Included files</span>
+                  <span class="ct">4 files · 18.7 MB total</span>
+                </div>
+                <div class="dl-list">
+                  <div class="dl-row">
+                    <span class="dl-icon pdf">PDF</span>
+                    <div class="dl-meta">
+                      <div class="dl-name">Acronis_BaaS_M365_Partner_Datasheet.pdf</div>
+                      <div class="dl-sub">Datasheet · EN · 8 pages</div>
+                    </div>
+                    <div class="dl-size">2.4 MB</div>
+                    <button class="dl-btn" aria-label="Download"><i data-lucide="arrow-down-to-line"></i></button>
+                  </div>
+                  <div class="dl-row">
+                    <span class="dl-icon zip">ZIP</span>
+                    <div class="dl-meta">
+                      <div class="dl-name">Co‑branded_assets_2026Q2.zip</div>
+                      <div class="dl-sub">Co‑branded · banners + social</div>
+                    </div>
+                    <div class="dl-size">11.2 MB</div>
+                    <button class="dl-btn" aria-label="Download"><i data-lucide="arrow-down-to-line"></i></button>
+                  </div>
+                  <div class="dl-row">
+                    <span class="dl-icon doc">PPT</span>
+                    <div class="dl-meta">
+                      <div class="dl-name">Sales_battlecard_v2.4.pptx</div>
+                      <div class="dl-sub">Sales · EMEA + APAC</div>
+                    </div>
+                    <div class="dl-size">3.8 MB</div>
+                    <button class="dl-btn" aria-label="Download"><i data-lucide="arrow-down-to-line"></i></button>
+                  </div>
+                  <div class="dl-row">
+                    <span class="dl-icon xls">XLS</span>
+                    <div class="dl-meta">
+                      <div class="dl-name">SKU_pricing_matrix_FY26.xlsx</div>
+                      <div class="dl-sub">Pricing · NDA required</div>
+                    </div>
+                    <div class="dl-size">1.3 MB</div>
+                    <button class="dl-btn" aria-label="Download"><i data-lucide="arrow-down-to-line"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <div class="footer-summary">
+              <span><span class="pkg-size">18.7 MB</span></span>
+              <span class="extra collapsed-only" style="display:none;">· +3 files</span>
+              <span class="extra expanded-only">· 4 files</span>
+            </div>
+            <button class="btn btn-primary">
+              <i data-lucide="download"></i>
+              Download all
+            </button>
+            <button class="btn btn-ghost btn-icon" data-toggle aria-label="Collapse">
+              <i data-lucide="chevron-down" class="chev"></i>
+            </button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 03 VARIATIONS ─────────── -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">03 / SYSTEM</div>
+      <h2 class="section-title">Variations</h2>
+      <div class="section-desc">Same card, different content combinations. Every element above the footer is independently optional — title is the only required slot.</div>
+    </div>
+
+    <div class="var-grid">
+
+      <!-- A: Logo only, single download -->
+      <div class="var-cell">
+        <div class="var-label">
+          <span class="name">A · Logo + single file</span>
+          <span class="desc">Minimal</span>
+        </div>
+        <article class="card card-small" data-state="collapsed">
+          <div class="card-body">
+            <div class="card-logo">
+              <svg class="logo-svg" viewBox="0 0 110 22" xmlns="http://www.w3.org/2000/svg" aria-label="AWS">
+                <path d="M22 8.5c0 0.6-0.07 1.1-0.2 1.45-0.13 0.35-0.3 0.74-0.5 1.16-0.07 0.13-0.1 0.25-0.1 0.36 0 0.15 0.09 0.3 0.28 0.45l0.92 0.62c0.13 0.1 0.2 0.2 0.2 0.32 0 0.1-0.06 0.22-0.18 0.34-0.18 0.18-0.36 0.34-0.55 0.49-0.18 0.15-0.36 0.27-0.55 0.36-0.18 0.1-0.38 0.13-0.58 0.08-0.18-0.06-0.36-0.18-0.55-0.34l-1.92-1.95c-0.65 0.78-1.45 1.4-2.42 1.85-0.97 0.46-2.03 0.7-3.2 0.7-1.7 0-3.1-0.48-4.2-1.45-1.1-0.97-1.65-2.32-1.65-4.04 0-1.84 0.65-3.34 1.95-4.5 1.3-1.15 3.04-1.72 5.22-1.72 0.72 0 1.47 0.06 2.25 0.18 0.78 0.13 1.6 0.32 2.42 0.6v-1.5c0-1.55-0.32-2.65-0.97-3.25C16.83-1.05 15.66-1.35 13.8-1.35c-0.85 0-1.72 0.1-2.62 0.32-0.9 0.2-1.78 0.45-2.62 0.78C8.18-0.18 7.92-0.07 7.73-0.02 7.55 0.04 7.42 0.06 7.32 0.06c-0.27 0-0.4-0.2-0.4-0.6v-0.94c0-0.3 0.04-0.55 0.13-0.7C7.14-2.36 7.32-2.5 7.6-2.6c0.85-0.4 1.86-0.74 3.05-1 1.18-0.27 2.43-0.4 3.76-0.4 2.85 0 4.95 0.65 6.3 1.95 1.35 1.3 2.03 3.27 2.03 5.93V8.5z" fill="#252F3E"/>
+                <text x="32" y="14" font-family="-apple-system,sans-serif" font-size="13" font-weight="700" fill="#252F3E" letter-spacing="-0.5">AWS</text>
+                <path d="M54 17c-4 1.6-8 2.4-11.6 2.4-5 0-9.5-1.8-12.9-4.4-0.3-0.2-0.04-0.5 0.3-0.3 3.7 2.1 8.2 3.3 12.8 3.3 3.1 0 6.5-0.65 9.65-1.98 0.46-0.2 0.85 0.3 0.45 0.6z" fill="#FF9900"/>
+                <path d="M55.4 15.4c-0.5-0.65-3.4-0.3-4.7-0.15-0.4 0.05-0.45-0.3-0.1-0.55 2.3-1.6 6.1-1.15 6.55-0.6 0.45 0.55-0.12 4.3-2.3 6.1-0.35 0.3-0.65 0.15-0.5-0.2 0.5-1.2 1.6-3.9 1.05-4.6z" fill="#FF9900"/>
+              </svg>
+            </div>
+            <h3 class="card-title">AWS S3 backup connector</h3>
+            <p class="card-desc clamp">Drop‑in integration to back up Acronis‑protected workloads directly to Amazon S3 with versioning and object lock.</p>
+          </div>
+          <div class="card-footer">
+            <div class="footer-summary"><span class="pkg-size">3.1 MB</span></div>
+            <button class="btn btn-primary"><i data-lucide="download"></i>Download</button>
+          </div>
+        </article>
+      </div>
+
+      <!-- B: No logo, tags only -->
+      <div class="var-cell">
+        <div class="var-label">
+          <span class="name">B · Tags, no logo</span>
+          <span class="desc">In‑house</span>
+        </div>
+        <article class="card card-small" data-state="collapsed">
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag tag-warning">Updated</span>
+              <span class="tag tag-info">Compliance</span>
+            </div>
+            <h3 class="card-title">SOC 2 Type II report — FY26</h3>
+            <p class="card-desc clamp">Independent auditor's report covering security, availability, and confidentiality trust criteria for the Acronis Cyber Protect Cloud platform.</p>
+          </div>
+          <div class="card-footer">
+            <div class="footer-summary"><span class="pkg-size">4.6 MB</span><span class="extra">· NDA</span></div>
+            <button class="btn btn-primary"><i data-lucide="download"></i>Download</button>
+          </div>
+        </article>
+      </div>
+
+      <!-- C: Title-only -->
+      <div class="var-cell">
+        <div class="var-label">
+          <span class="name">C · Title only</span>
+          <span class="desc">Most minimal</span>
+        </div>
+        <article class="card card-small" data-state="collapsed">
+          <div class="card-body">
+            <h3 class="card-title" style="margin-bottom:0;">Brand guidelines &amp; logo pack</h3>
+          </div>
+          <div class="card-footer">
+            <div class="footer-summary"><span class="pkg-size">12.4 MB</span><span class="extra">· +2 files</span></div>
+            <button class="btn btn-primary"><i data-lucide="download"></i>Download</button>
+            <button class="btn btn-ghost btn-icon" data-toggle><i data-lucide="chevron-down" class="chev"></i></button>
+          </div>
+        </article>
+      </div>
+
+      <!-- D: Logo + many tags, multi-download -->
+      <div class="var-cell">
+        <div class="var-label">
+          <span class="name">D · Full feature</span>
+          <span class="desc">All slots populated</span>
+        </div>
+        <article class="card card-small" data-state="collapsed">
+          <div class="card-body">
+            <div class="card-logo">
+              <svg class="logo-svg" viewBox="0 0 92 22" xmlns="http://www.w3.org/2000/svg" aria-label="VMware">
+                <text x="0" y="16" font-family="-apple-system,sans-serif" font-size="14" font-weight="700" fill="#717074" letter-spacing="-0.3">VMware</text>
+                <circle cx="60" cy="11" r="3" fill="#00BCEB"/>
+                <circle cx="70" cy="11" r="3" fill="#00BCEB" opacity="0.6"/>
+                <circle cx="80" cy="11" r="3" fill="#00BCEB" opacity="0.3"/>
+              </svg>
+            </div>
+            <div class="card-tags">
+              <span class="tag tag-success">Verified</span>
+              <span class="tag tag-info">Hypervisor</span>
+              <span class="tag tag-warning">Beta</span>
+            </div>
+            <h3 class="card-title">vSphere 8 integration toolkit</h3>
+            <p class="card-desc clamp">Agentless backup, instant restore, and CBT‑accelerated change tracking for VMware vSphere 8 environments. Tested through ESXi 8.0u3.</p>
+          </div>
+          <div class="card-footer">
+            <div class="footer-summary"><span class="pkg-size">42.8 MB</span><span class="extra">· +5 files</span></div>
+            <button class="btn btn-primary"><i data-lucide="download"></i>Download</button>
+            <button class="btn btn-ghost btn-icon" data-toggle><i data-lucide="chevron-down" class="chev"></i></button>
+          </div>
+        </article>
+      </div>
+
+      <!-- E: Logo only, no desc -->
+      <div class="var-cell">
+        <div class="var-label">
+          <span class="name">E · Logo + title only</span>
+          <span class="desc">No description</span>
+        </div>
+        <article class="card card-small" data-state="collapsed">
+          <div class="card-body">
+            <div class="card-logo">
+              <svg class="logo-svg" viewBox="0 0 92 22" xmlns="http://www.w3.org/2000/svg" aria-label="Veeam">
+                <text x="0" y="16" font-family="-apple-system,sans-serif" font-size="14" font-weight="800" fill="#00B336" letter-spacing="-0.3">Veeam</text>
+                <text x="50" y="16" font-family="-apple-system,sans-serif" font-size="10" font-weight="500" fill="#6E7681" letter-spacing="0">Software</text>
+              </svg>
+            </div>
+            <h3 class="card-title" style="margin-bottom:0;">Veeam → Acronis migration toolkit</h3>
+          </div>
+          <div class="card-footer">
+            <div class="footer-summary"><span class="pkg-size">8.2 MB</span><span class="extra">· +1 file</span></div>
+            <button class="btn btn-primary"><i data-lucide="download"></i>Download</button>
+            <button class="btn btn-ghost btn-icon" data-toggle><i data-lucide="chevron-down" class="chev"></i></button>
+          </div>
+        </article>
+      </div>
+
+      <!-- F: Status states (danger / external link) -->
+      <div class="var-cell">
+        <div class="var-label">
+          <span class="name">F · External resource</span>
+          <span class="desc">No download · link out</span>
+        </div>
+        <article class="card card-small" data-state="collapsed">
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag tag-danger">CVE</span>
+              <span class="tag tag-neutral">External</span>
+            </div>
+            <h3 class="card-title">CVE‑2026‑01182 advisory</h3>
+            <p class="card-desc clamp">Security bulletin covering a privilege escalation vector in Acronis Agent for Linux prior to build 30.1.16.</p>
+          </div>
+          <div class="card-footer">
+            <div class="footer-summary"><span class="pkg-size" style="color:var(--fg-3);">Hosted externally</span></div>
+            <button class="btn btn-primary"><i data-lucide="external-link"></i>Open advisory</button>
+          </div>
+        </article>
+      </div>
+
+    </div>
+
+    <!-- List layout demo -->
+    <div style="margin-top:48px;">
+      <div class="grid-demo-head">
+        <div class="gh-l">Same component, list layout — for dense library views.</div>
+        <div class="layout-toggle">
+          <button><i data-lucide="layout-grid"></i>Grid</button>
+          <button class="active"><i data-lucide="list"></i>List</button>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:10px;">
+
+        <article class="card card-list" data-state="collapsed">
+          <div class="l-logo">
+            <svg class="logo-svg" viewBox="0 0 22 22"><rect x="0" y="0" width="10" height="10" fill="#F25022"/><rect x="11" y="0" width="10" height="10" fill="#7FBA00"/><rect x="0" y="11" width="10" height="10" fill="#00A4EF"/><rect x="11" y="11" width="10" height="10" fill="#FFB900"/></svg>
+          </div>
+          <div class="l-main">
+            <div class="l-tags"><span class="tag tag-success">Certified</span><span class="tag tag-info">Backup &amp; DR</span></div>
+            <h4 class="l-title">Backup as a Service — Microsoft 365</h4>
+            <p class="l-desc">#1 hybrid cloud BaaS for any virtual, physical, and cloud environment.</p>
+          </div>
+          <div class="l-meta">
+            <span>18.7 MB</span>
+            <span class="dotsep"></span>
+            <span>4 files</span>
+            <span class="dotsep"></span>
+            <span>Updated 14 May</span>
+          </div>
+          <div class="l-btns">
+            <button class="btn btn-primary"><i data-lucide="download"></i>Download</button>
+            <button class="btn btn-ghost btn-icon"><i data-lucide="chevron-down"></i></button>
+          </div>
+        </article>
+
+        <article class="card card-list" data-state="collapsed">
+          <div class="l-logo" style="background:#fff;">
+            <svg class="logo-svg" viewBox="0 0 22 22"><text x="2" y="16" font-family="sans-serif" font-size="13" font-weight="800" fill="#00B336">V</text></svg>
+          </div>
+          <div class="l-main">
+            <div class="l-tags"><span class="tag tag-neutral">Migration</span></div>
+            <h4 class="l-title">Veeam → Acronis migration toolkit</h4>
+            <p class="l-desc">Step‑by‑step playbook and CLI for moving Veeam backup chains into Acronis Cyber Protect.</p>
+          </div>
+          <div class="l-meta">
+            <span>8.2 MB</span>
+            <span class="dotsep"></span>
+            <span>2 files</span>
+            <span class="dotsep"></span>
+            <span>Updated 02 May</span>
+          </div>
+          <div class="l-btns">
+            <button class="btn btn-primary"><i data-lucide="download"></i>Download</button>
+            <button class="btn btn-ghost btn-icon"><i data-lucide="chevron-down"></i></button>
+          </div>
+        </article>
+
+        <article class="card card-list" data-state="collapsed">
+          <div class="l-logo" style="background:var(--acronis-blue-050);">
+            <img src="ds/assets/Acronis-symbol.svg" alt="" />
+          </div>
+          <div class="l-main">
+            <div class="l-tags"><span class="tag tag-warning">Updated</span><span class="tag tag-info">Compliance</span></div>
+            <h4 class="l-title">SOC 2 Type II report — FY26</h4>
+            <p class="l-desc">Independent auditor's report. Security, availability, and confidentiality criteria.</p>
+          </div>
+          <div class="l-meta">
+            <span>4.6 MB</span>
+            <span class="dotsep"></span>
+            <span>1 file</span>
+            <span class="dotsep"></span>
+            <span>NDA required</span>
+          </div>
+          <div class="l-btns">
+            <button class="btn btn-primary"><i data-lucide="download"></i>Download</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 04 KEY FEATURES ─────────── -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">04 / RULES</div>
+      <h2 class="section-title">Key features</h2>
+      <div class="section-desc">Four invariants the card system protects. Variants may add slots, but these behaviors hold across every variation above.</div>
+    </div>
+
+    <div class="feat-grid">
+
+      <div class="feat">
+        <div class="feat-num">F.01</div>
+        <div class="feat-icon"><i data-lucide="pin"></i></div>
+        <h4 class="feat-title">Persistent footer actions</h4>
+        <p class="feat-desc">The primary download is anchored to the footer in every state. Expanding the card never displaces it — users can always download without scrolling or hunting.</p>
+        <div class="feat-diagram">
+          <div class="dgm-stack">
+            <div class="body-block fade"></div>
+            <div class="body-block fade" style="width:70%"></div>
+            <div class="body-block fade" style="width:85%"></div>
+            <div class="footer-block"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat">
+        <div class="feat-num">F.02</div>
+        <div class="feat-icon"><i data-lucide="chevrons-down-up"></i></div>
+        <h4 class="feat-title">Progressive disclosure</h4>
+        <p class="feat-desc">Collapsed shows the headline; expanded reveals metadata and the file list. The chevron only appears when there's something hidden to expand to.</p>
+        <div class="feat-diagram">
+          <div class="dgm-disclosure">
+            <div class="mini">
+              <div class="ln t"></div>
+              <div class="ln"></div>
+              <div class="ln" style="width:70%"></div>
+            </div>
+            <i data-lucide="arrow-right" class="arrow"></i>
+            <div class="mini tall">
+              <div class="ln t"></div>
+              <div class="ln"></div>
+              <div class="ln" style="width:80%"></div>
+              <div class="ln" style="width:60%"></div>
+              <div class="ln" style="width:40%"></div>
+              <div class="ln" style="width:90%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat">
+        <div class="feat-num">F.03</div>
+        <div class="feat-icon"><i data-lucide="layout-template"></i></div>
+        <h4 class="feat-title">Scalable optional elements</h4>
+        <p class="feat-desc">Every slot above the footer — logo, tags, description, metadata — is independently optional. The title is the only required element. The card collapses gracefully around what's present.</p>
+        <div class="feat-diagram">
+          <div class="dgm-optional">
+            <div class="slot on">L</div>
+            <div class="slot on">T</div>
+            <div class="slot on">★</div>
+            <div class="slot">D</div>
+            <div class="slot on">M</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat">
+        <div class="feat-num">F.04</div>
+        <div class="feat-icon"><i data-lucide="files"></i></div>
+        <h4 class="feat-title">Multi‑download support</h4>
+        <p class="feat-desc">Scales cleanly from 1 to N downloads. One file collapses the file list entirely; multiple files surface as a structured row group with per‑file size and type chip.</p>
+        <div class="feat-diagram">
+          <div class="dgm-multi">
+            <div class="row"><div class="ic" style="background:#D9272E;"></div><div class="nm"></div><div class="dl"><i data-lucide="arrow-down"></i></div></div>
+            <div class="row"><div class="ic" style="background:#4A5570;"></div><div class="nm" style="width:55%"></div><div class="dl"><i data-lucide="arrow-down"></i></div></div>
+            <div class="row"><div class="ic" style="background:#1F3F7A;"></div><div class="nm" style="width:80%"></div><div class="dl"><i data-lucide="arrow-down"></i></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="page-foot">
+    <span>Acronis Partner Resource Portal · Component spec v2.4</span>
+    <span>Built on the Acronis Design System</span>
+  </footer>
+
+</div>
+
+<script>
+  // Render lucide icons
+  if (window.lucide) lucide.createIcons();
+
+  // Card expand/collapse toggling
+  document.querySelectorAll('[data-toggle]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const card = btn.closest('.card');
+      if (!card) return;
+      const next = card.dataset.state === 'expanded' ? 'collapsed' : 'expanded';
+      card.dataset.state = next;
+      // Swap footer counter visibility (where present)
+      card.querySelectorAll('.collapsed-only').forEach(el => el.style.display = next === 'expanded' ? 'none' : '');
+      card.querySelectorAll('.expanded-only').forEach(el => el.style.display = next === 'expanded' ? '' : 'none');
+    });
+  });
+</script>
+
+</body>
+</html>
